@@ -11,6 +11,8 @@
 |
 */
 
-Route::prefix('front')->group(function() {
-    Route::get('/', 'FrontController@index');
+Route::group([
+    'as' => 'front.'
+], function () {
+    Route::get('', 'FrontController@index')->name('index');
 });
