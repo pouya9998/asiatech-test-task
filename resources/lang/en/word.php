@@ -15,5 +15,11 @@ return [
     'wrong_auth' => 'Wrong Auth',
     'user_exist' => 'User Already Exist',
     'order' => 'Order',
-    'minutes' => 'Minutes'
+    'minutes' => 'Minutes',
+    'no_data' => 'There Is No Data ',
+    'user' => 'User',
+    'food' => 'Food',
+    'date' => 'Date',
+    'status'=> 'Status',
+    'orders'=> 'Orders',
 ];

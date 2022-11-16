@@ -9,6 +9,10 @@
     @endforeach
     @auth()
         <li class="nav-item">
+            <a class="nav-link {{Route::currentRouteName() == 'order.index' ? 'active' : '' }}" href="{{route('order.index')}}">{{__('word.orders')}}</a>
+        </li>
+
+        <li class="nav-item">
             <a class="nav-link" href="{{route('auth.logout')}}">{{__('word.logout')}}</a>
         </li>
     @endauth

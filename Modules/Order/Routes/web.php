@@ -11,6 +11,12 @@
 |
 */
 
-Route::prefix('order')->group(function() {
-    Route::get('/', 'OrderController@index');
+
+Route::group([
+    'as' => 'order.',
+    'prefix' => 'order'
+], function () {
+    Route::get('', 'OrderController@index')->name('index');
+    Route::post('', 'OrderController@create')->name('create');
 });
+

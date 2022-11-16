@@ -5,75 +5,39 @@ namespace Modules\Order\Http\Controllers;
 use Illuminate\Contracts\Support\Renderable;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
+use Modules\Order\Repositories\OrderInterface;
 
 class OrderController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     * @return Renderable
-     */
+    private $orderRepository;
+
+    public function __construct(OrderInterface $orderRepository)
+    {
+        $this->orderRepository = $orderRepository;
+    }
+
     public function index()
     {
-        return view('order::index');
+        $orders = $this->getOrders();
+        return view('order::index', compact('orders'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     * @return Renderable
-     */
-    public function create()
-    {
-        return view('order::create');
-    }
+    private function getOrders(){
+        $user_type = auth()->user()->type;
+        $search = [];
 
-    /**
-     * Store a newly created resource in storage.
-     * @param Request $request
-     * @return Renderable
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        if ($user_type == 'user'){
+            $search[] = [
+                'column' => 'user_id',
+                'operator' => '=',
+                'value' => auth()->id()
+            ];
+        }
 
-    /**
-     * Show the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function show($id)
-    {
-        return view('order::show');
-    }
+        return $this->orderRepository->all($search,[[
+            'column' => 'id',
+            'direction' => 'DESC'
+        ]],null,true);
 
-    /**
-     * Show the form for editing the specified resource.
-     * @param int $id
-     * @return Renderable
-     */
-    public function edit($id)
-    {
-        return view('order::edit');
-    }
-
-    /**
-     * Update the specified resource in storage.
-     * @param Request $request
-     * @param int $id
-     * @return Renderable
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     * @param int $id
-     * @return Renderable
-     */
-    public function destroy($id)
-    {
-        //
     }
 }
