@@ -23,14 +23,24 @@ class FrontController extends Controller
     {
         $search = [];
         if ($request->filled('search')){
-            $search = [
-                [
+            $search[0] = [
                     'column' => 'title',
                     'operator' => 'LIKE',
                     'value' => '%'. $request->input('search') .'%'
-                ]
-            ];
+                ];
         }
+        if ($request->filled('category_id')){
+            $search[1] =
+                [
+                    'column' => 'category_id',
+                    'operator' => '=',
+                    'value' =>  $request->input('category_id')
+                ];
+
+        }
+
+
+
         $foods = $this->foodInstance->all($search,[],null,true);
         return view('front::index',compact('foods'));
     }

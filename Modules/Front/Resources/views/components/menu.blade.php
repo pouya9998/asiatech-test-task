@@ -2,6 +2,11 @@
     <li class="nav-item">
         <a class="nav-link {{Route::currentRouteName() == 'front.index' ? 'active' : '' }}" aria-current="page" href="{{route('front.index')}}">{{__('word.home')}}</a>
     </li>
+    @foreach($categories as $category)
+        <li class="nav-item">
+            <a class="nav-link" href="{{route('front.index',['category_id' => $category->id])}}">{{$category->title}}</a>
+        </li>
+    @endforeach
     @auth()
         <li class="nav-item">
             <a class="nav-link" href="{{route('auth.logout')}}">{{__('word.logout')}}</a>

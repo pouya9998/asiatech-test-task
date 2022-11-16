@@ -4,6 +4,8 @@ namespace Modules\Front\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Category\Entities\Category;
+use Modules\Category\Repositories\CategoryRepository;
 
 class FrontServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class FrontServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        view()->share('categories',(new CategoryRepository())->all());
     }
 
     /**
