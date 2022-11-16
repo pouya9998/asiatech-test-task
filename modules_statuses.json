@@ -1,0 +1,7 @@
+{
+    "Front": true,
+    "Auth": true,
+    "Category": true,
+    "Food": true,
+    "Order": true
+}
