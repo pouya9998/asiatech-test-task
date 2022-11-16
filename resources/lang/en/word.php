@@ -13,5 +13,7 @@ return [
     'password_confirm' => 'Password Confirm',
     'logout' => 'Logout',
     'wrong_auth' => 'Wrong Auth',
-    'user_exist' => 'User Already Exist'
+    'user_exist' => 'User Already Exist',
+    'order' => 'Order',
+    'minutes' => 'Minutes'
 ];

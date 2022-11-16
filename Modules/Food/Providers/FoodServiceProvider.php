@@ -4,6 +4,8 @@ namespace Modules\Food\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Food\Repositories\FoodInterface;
+use Modules\Food\Repositories\FoodRepository;
 
 class FoodServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,7 @@ class FoodServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(FoodInterface::class,FoodRepository::class);
     }
 
     /**

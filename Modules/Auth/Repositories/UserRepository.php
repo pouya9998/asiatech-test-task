@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Category\Repositories;
+namespace Modules\Auth\Repositories;
 
-use Modules\Category\Entities\Category;
+use App\User;
 
-class FoodRepository implements FoodInterface
+class UserRepository implements UserInterface
 {
 
     public function all($where = [], $order = [], $take = null, $paginate = false)
@@ -77,7 +77,7 @@ class FoodRepository implements FoodInterface
 
     public function model()
     {
-        return Category::query();
+        return User::query();
     }
 
     public function create($data = [])

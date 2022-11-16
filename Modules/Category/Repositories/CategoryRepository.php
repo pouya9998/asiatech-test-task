@@ -1,10 +1,10 @@
 <?php
 
-namespace Modules\Auth\Repositories;
+namespace Modules\Category\Repositories;
 
-use App\User;
+use Modules\Category\Entities\Category;
 
-class categoryRepository implements categoryInterface
+class CategoryRepository implements CategoryInterface
 {
 
     public function all($where = [], $order = [], $take = null, $paginate = false)
@@ -77,7 +77,7 @@ class categoryRepository implements categoryInterface
 
     public function model()
     {
-        return User::query();
+        return Category::query();
     }
 
     public function create($data = [])

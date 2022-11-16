@@ -4,6 +4,8 @@ namespace Modules\Category\Providers;
 
 use Illuminate\Support\ServiceProvider;
 use Illuminate\Database\Eloquent\Factory;
+use Modules\Category\Repositories\CategoryInterface;
+use Modules\Category\Repositories\CategoryRepository;
 
 class CategoryServiceProvider extends ServiceProvider
 {
@@ -38,6 +40,8 @@ class CategoryServiceProvider extends ServiceProvider
     public function register()
     {
         $this->app->register(RouteServiceProvider::class);
+        $this->app->bind(CategoryInterface::class, CategoryRepository::class);
+
     }
 
     /**
