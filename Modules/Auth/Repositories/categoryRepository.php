@@ -4,7 +4,7 @@ namespace Modules\Auth\Repositories;
 
 use App\User;
 
-class UserRepository implements UserInterface
+class categoryRepository implements categoryInterface
 {
 
     public function all($where = [], $order = [], $take = null, $paginate = false)

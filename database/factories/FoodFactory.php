@@ -13,6 +13,7 @@ $factory->define(\Modules\Food\Entities\Food::class, function (Faker $faker) {
         'description' => $faker->text(40),
         'image' => $faker->imageUrl(),
         'category_id' => $faker->randomElement($categories),
-        'buffer' => $faker->numberBetween(0,100)
+        'buffer' => $faker->numberBetween(0,100),
+        'prepare_minutes' => $faker->numberBetween(20,100)
     ];
 });

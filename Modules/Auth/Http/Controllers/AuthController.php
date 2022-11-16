@@ -7,12 +7,12 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Modules\Auth\Repositories\UserInterface;
+use Modules\Auth\Repositories\categoryInterface;
 
 class AuthController extends Controller{
 
     private $userRepository;
-    public function __construct(UserInterface $userRepository)
+    public function __construct(categoryInterface $userRepository)
     {
         $this->userRepository = $userRepository;
     }

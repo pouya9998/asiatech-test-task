@@ -20,6 +20,7 @@ class CreateFoodsTable extends Migration
             $table->text('description')->nullable();
             $table->unsignedBigInteger('category_id');
             $table->bigInteger('buffer');
+            $table->bigInteger('prepare_minutes');
             $table->softDeletes();
             $table->timestamps();
         });
