@@ -96,7 +96,7 @@
             <div class="collapse navbar-collapse" id="navbarCollapse">
                 @include('front::components.menu')
                 <form class="d-flex" role="search">
-                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    <input value="{{Request()->input('search')}}" class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
                     <button class="btn btn-outline-success" type="submit">{{__('word.search')}}</button>
                 </form>
             </div>

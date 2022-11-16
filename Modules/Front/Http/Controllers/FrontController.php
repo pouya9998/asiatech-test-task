@@ -19,9 +19,19 @@ class FrontController extends Controller
         $this->categoryInstance = $category;
     }
 
-    public function index()
+    public function index(Request $request)
     {
-        $foods = $this->foodInstance->all([],[],null,true);
+        $search = [];
+        if ($request->filled('search')){
+            $search = [
+                [
+                    'column' => 'title',
+                    'operator' => 'LIKE',
+                    'value' => '%'. $request->input('search') .'%'
+                ]
+            ];
+        }
+        $foods = $this->foodInstance->all($search,[],null,true);
         return view('front::index',compact('foods'));
     }
 }
