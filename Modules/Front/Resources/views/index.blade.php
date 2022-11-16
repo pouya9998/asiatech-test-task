@@ -5,7 +5,9 @@
     <div class="container">
         <div class="album py-5 bg-light">
             <div class="container">
-
+                <div class="m-2">
+                    @include('front::components.messages')
+                </div>
                 <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
                     @foreach($foods as $food)
                      <div class="col">
@@ -16,7 +18,7 @@
                                 <p>{{$food->description}}</p>
                                 <div class="d-flex justify-content-between align-items-center">
                                     <div class="btn-group">
-                                        <button type="button" class="btn btn-sm btn-outline-secondary">{{__('word.order')}}</button>
+                                        <a @if($food->buffer>=1) href="{{route('order.create',$food)}}"  @endif class="btn btn-sm btn-outline-secondary">{{__('word.order')}}</a>
                                     </div>
                                     <small class="text-muted">{{$food->prepare_minutes}} {{__('word.minutes')}}</small>
                                 </div>

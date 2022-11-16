@@ -22,4 +22,5 @@ return [
     'date' => 'Date',
     'status'=> 'Status',
     'orders'=> 'Orders',
+    'successfully'=> 'Successfully',
 ];

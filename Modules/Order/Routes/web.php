@@ -14,9 +14,10 @@
 
 Route::group([
     'as' => 'order.',
-    'prefix' => 'order'
+    'prefix' => 'order',
+    'middleware' => 'auth'
 ], function () {
     Route::get('', 'OrderController@index')->name('index');
-    Route::post('', 'OrderController@create')->name('create');
+    Route::get('{id}', 'OrderController@create')->name('create');
 });
 
