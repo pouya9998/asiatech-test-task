@@ -12,7 +12,7 @@
                     <form action="{{route('auth.login.action')}}" method="post">
                         @csrf
                         <h1 class="h3 mb-3 fw-normal">{{__('word.login')}}</h1>
-
+                        <input type="hidden" name="intend" value="{{request()->input('redirect')}}">
                         <div class="form-floating m-2">
                             <input type="email" class="form-control" name="email" id="floatingInput" placeholder="{{__('word.email')}}" required>
                             <label for="floatingInput">{{__('word.email')}}</label>

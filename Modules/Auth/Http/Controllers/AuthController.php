@@ -18,7 +18,7 @@ class AuthController extends Controller{
         $this->userRepository = $userRepository;
     }
 
-    public function login()
+    public function login(Request $request)
     {
         return view('auth::login');
     }

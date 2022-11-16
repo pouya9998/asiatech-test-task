@@ -86,4 +86,9 @@ class OrderRepository implements OrderInterface
     {
         return $this->model()->create($data);
     }
+
+    public function update($where = [],$data=[]){
+        return $this->model()->where($where)->update($data);
+    }
+
 }

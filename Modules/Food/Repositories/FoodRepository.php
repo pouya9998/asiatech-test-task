@@ -85,4 +85,13 @@ class FoodRepository implements FoodInterface
     {
         return $this->model()->create($data);
     }
+
+    public function decrement($id,$column,$amount){
+        return $this->first([[
+            'column' => 'id',
+            'operator' => '=',
+            'value' => $id
+        ]])->decrement($column,$amount);
+    }
+
 }

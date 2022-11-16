@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use Illuminate\Routing\Controller;
 use Modules\Food\Repositories\FoodInterface;
 use Modules\Order\Repositories\OrderInterface;
+use function GuzzleHttp\Promise\all;
 
 class OrderController extends Controller
 {
@@ -32,7 +33,20 @@ class OrderController extends Controller
             'user_id' => auth()->id()
         ]);
 
+        $this->foodRepository->decrement($food_id,'buffer',1);
         return redirect(route('order.index'))->with('success',__('word.successfully'));
+    }
+
+    public function status($id,Request $request)
+    {
+
+        $request->validate([
+            'status' => 'required|in:pending,accept,reject'
+        ]);
+
+        $this->orderRepository->update([['column' => 'id','operator' => '=', 'value' => $id]],['status' => $request->input('status')]);
+        return redirect(route('order.index'))->with('success',__('word.successfully'));
+
     }
 
     private function getOrders(){

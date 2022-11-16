@@ -19,5 +19,6 @@ Route::group([
 ], function () {
     Route::get('', 'OrderController@index')->name('index');
     Route::get('{id}', 'OrderController@create')->name('create');
+    Route::post('status/{id}', 'OrderController@status')->name('status');
 });
 

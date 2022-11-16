@@ -23,4 +23,7 @@ return [
     'status'=> 'Status',
     'orders'=> 'Orders',
     'successfully'=> 'Successfully',
+    'pending'=> 'Pending',
+    'accept'=> 'Accept',
+    'reject'=> 'Reject',
 ];

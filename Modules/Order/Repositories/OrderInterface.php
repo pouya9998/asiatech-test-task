@@ -10,5 +10,6 @@ interface OrderInterface
     public function exists($where=[]);
     public function count($where=[]);
     public function create($data=[]);
+    public function update($where= [],$data=[]);
 
 }

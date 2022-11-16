@@ -30,7 +30,20 @@
                                 @endif
                                 <td>{{$order->food->title}}</td>
                                 <td>{{date($order->created_at)}}</td>
+                                @if(auth()->user()->type == 'user')
                                 <td>{{$order->status}}</td>
+                                @else
+                                    <td>
+                                    <form id="form{{$order->id}}" action="{{route('order.status',$order->id)}}" method="Post">
+                                        @csrf
+                                        <select id="select" name="status" class="form-control" onchange="document.getElementById('form'+{{$order->id}}).submit()">
+                                            <option @if($order->status == 'pending') selected @endif value="pending">{{__('word.pending')}}</option>
+                                            <option @if($order->status == 'accept') selected @endif value="accept">{{__('word.accept')}}</option>
+                                            <option @if($order->status == 'reject') selected @endif value="reject">{{__('word.reject')}}</option>
+                                        </select>
+                                    </form>
+                                    </td>
+                                @endif
                             </tr>
                             @empty
                                 <tr>
